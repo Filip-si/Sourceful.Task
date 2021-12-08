@@ -1,10 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sourceful.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sourceful.Infrastructure
 {
@@ -19,5 +14,18 @@ namespace Sourceful.Infrastructure
         public DbSet<UserAddress> UserAddresses { get; set; }
 
         public DbSet<UserSetting> UserSettings { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<User>()
+                .HasOne(u => u.Address)
+                .WithOne(ua => ua.User)
+                .HasForeignKey<UserAddress>(u => u.UserId);
+
+            builder.Entity<User>()
+                .HasOne(u => u.Setting)
+                .WithOne(us => us.User)
+                .HasForeignKey<UserSetting>(u => u.UserId);
+        }
     }
 }
