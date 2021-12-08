@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sourceful.Domain.Entities
 {
@@ -15,6 +11,14 @@ namespace Sourceful.Domain.Entities
         public string LastName { get; set; }
 
         public int Age { get; set; }
+
+        public Guid UserAddressId { get; set; }
+
+        public UserAddress Address { get; set; }
+
+        public Guid UserSettingId { get; set; }
+
+        public UserSetting Setting { get; set; }
 
     }
 }

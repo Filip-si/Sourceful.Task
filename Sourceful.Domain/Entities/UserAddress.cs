@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sourceful.Domain.Entities
 {
@@ -15,5 +11,9 @@ namespace Sourceful.Domain.Entities
         public int Number { get; set; }
 
         public int PostCode { get; set; }
+
+        public Guid UserId { get; set; }
+
+        public User User { get; set; }
     }
 }
